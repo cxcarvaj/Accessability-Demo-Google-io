@@ -12,45 +12,62 @@ class HomeScreen extends StatelessWidget {
             Image.asset(
               'assets/home_background.jpeg',
             ),
-            Column(
+            const Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 14, right: 14),
-                  child: Text(
-                    'Bienvenidos a la demo de accesibilidad de Google I/O Ecuador',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                FilledButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const FormScreen()),
-                    );
-                  },
-                  style: FilledButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    backgroundColor: const Color.fromRGBO(245, 186, 65, 0.9),
-                    elevation: 8,
-                  ),
-                  child: const Text(
-                    '¡Empecemos!',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
+                _WelcomeMessage(),
+                SizedBox(height: 20),
+                _StartedButton(),
               ],
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _WelcomeMessage extends StatelessWidget {
+  const _WelcomeMessage();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Padding(
+      padding: EdgeInsets.only(left: 14, right: 14),
+      child: Text(
+        'Bienvenidos a la demo de accesibilidad de Google I/O Ecuador',
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+      ),
+    );
+  }
+}
+
+class _StartedButton extends StatelessWidget {
+  const _StartedButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return FilledButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const FormScreen()),
+        );
+      },
+      style: FilledButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        backgroundColor: const Color.fromRGBO(245, 186, 65, 0.9),
+        elevation: 8,
+      ),
+      child: const Text(
+        '¡Empecemos!',
+        style: TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.w600,
+          fontSize: 18,
         ),
       ),
     );
@@ -72,49 +89,66 @@ class HomeScreen extends StatelessWidget {
 //               'assets/home_background.jpeg',
 //               semanticLabel: 'Imagen de Fondo de Google I/O',
 //             ),
-//             Column(
+//             const Column(
 //               mainAxisAlignment: MainAxisAlignment.center,
 //               children: [
-//                 const Padding(
-//                   padding: EdgeInsets.only(left: 14, right: 14),
-//                   child: Text(
-//                     'Bienvenidos a la demo de accesibilidad de Google I/O Ecuador',
-//                     semanticsLabel:
-//                         'Bienvenidos a la demo de accesibilidad de Google I/O Ecuador, mensaje de bienvenida a la aplicación',
-//                     textAlign: TextAlign.center,
-//                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-//                   ),
-//                 ),
-//                 const SizedBox(height: 20),
-//                 FilledButton(
-//                   onPressed: () {
-//                     Navigator.push(
-//                       context,
-//                       MaterialPageRoute(
-//                           builder: (context) => const FormScreen()),
-//                     );
-//                   },
-//                   style: FilledButton.styleFrom(
-//                     shape: RoundedRectangleBorder(
-//                       borderRadius: BorderRadius.circular(20),
-//                     ),
-//                     backgroundColor: const Color.fromRGBO(245, 186, 65, 0.9),
-//                     elevation: 8,
-//                   ),
-//                   child: const Text(
-//                     '¡Empecemos!',
-//                     semanticsLabel:
-//                         '¡Empecemos!, Botón para ir a la siguiente pantalla de la demo',
-//                     style: TextStyle(
-//                       color: Colors.black,
-//                       fontWeight: FontWeight.w600,
-//                       fontSize: 18,
-//                     ),
-//                   ),
-//                 ),
+//                 _WelcomeMessage(),
+//                 SizedBox(height: 20),
+//                 _StartedButton(),
 //               ],
 //             ),
 //           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// class _WelcomeMessage extends StatelessWidget {
+//   const _WelcomeMessage();
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return const Padding(
+//       padding: EdgeInsets.only(left: 14, right: 14),
+//       child: Text(
+//         'Bienvenidos a la demo de accesibilidad de Google I/O Ecuador',
+//         semanticsLabel:
+//             'Bienvenidos a la demo de accesibilidad de Google I/O Ecuador, mensaje de bienvenida a la aplicación',
+//         textAlign: TextAlign.center,
+//         style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+//       ),
+//     );
+//   }
+// }
+
+// class _StartedButton extends StatelessWidget {
+//   const _StartedButton();
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return FilledButton(
+//       onPressed: () {
+//         Navigator.push(
+//           context,
+//           MaterialPageRoute(builder: (context) => const FormScreen()),
+//         );
+//       },
+//       style: FilledButton.styleFrom(
+//         shape: RoundedRectangleBorder(
+//           borderRadius: BorderRadius.circular(20),
+//         ),
+//         backgroundColor: const Color.fromRGBO(245, 186, 65, 0.9),
+//         elevation: 8,
+//       ),
+//       child: const Text(
+//         '¡Empecemos!',
+//         semanticsLabel:
+//             '¡Empecemos!, Botón para ir a la siguiente pantalla de la demo',
+//         style: TextStyle(
+//           color: Colors.black,
+//           fontWeight: FontWeight.w600,
+//           fontSize: 18,
 //         ),
 //       ),
 //     );
