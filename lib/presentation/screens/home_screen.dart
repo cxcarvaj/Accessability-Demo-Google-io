@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:accessability_demo_google_io/presentation/screens/screens.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -14,19 +15,28 @@ class HomeScreen extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
-                  'Bienvenidos a la demo de accesibilidad de Google I/O Ecuador',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                const Padding(
+                  padding: EdgeInsets.only(left: 14, right: 14),
+                  child: Text(
+                    'Bienvenidos a la demo de accesibilidad de Google I/O Ecuador',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                  ),
                 ),
                 const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
+                FilledButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const FormScreen()),
+                    );
+                  },
+                  style: FilledButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    backgroundColor: const Color.fromRGBO(242, 183, 54, 10),
+                    backgroundColor: const Color.fromRGBO(245, 186, 65, 0.9),
                     elevation: 8,
                   ),
                   child: const Text(
@@ -48,6 +58,7 @@ class HomeScreen extends StatelessWidget {
 }
 
 // import 'package:flutter/material.dart';
+// import 'package:accessability_demo_google_io/presentation/screens/screens.dart';
 
 // class HomeScreen extends StatelessWidget {
 //   const HomeScreen({Key? key}) : super(key: key);
@@ -64,21 +75,30 @@ class HomeScreen extends StatelessWidget {
 //             Column(
 //               mainAxisAlignment: MainAxisAlignment.center,
 //               children: [
-//                 const Text(
-//                   'Bienvenidos a la demo de accesibilidad de Google I/O Ecuador',
-//                   semanticsLabel:
-//                       'Bienvenidos a la demo de accesibilidad de Google I/O Ecuador, mensaje de bienvenida a la aplicación',
-//                   textAlign: TextAlign.center,
-//                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+//                 const Padding(
+//                   padding: EdgeInsets.only(left: 14, right: 14),
+//                   child: Text(
+//                     'Bienvenidos a la demo de accesibilidad de Google I/O Ecuador',
+//                     semanticsLabel:
+//                         'Bienvenidos a la demo de accesibilidad de Google I/O Ecuador, mensaje de bienvenida a la aplicación',
+//                     textAlign: TextAlign.center,
+//                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+//                   ),
 //                 ),
 //                 const SizedBox(height: 20),
-//                 ElevatedButton(
-//                   onPressed: () {},
-//                   style: ElevatedButton.styleFrom(
+//                 FilledButton(
+//                   onPressed: () {
+//                     Navigator.push(
+//                       context,
+//                       MaterialPageRoute(
+//                           builder: (context) => const FormScreen()),
+//                     );
+//                   },
+//                   style: FilledButton.styleFrom(
 //                     shape: RoundedRectangleBorder(
 //                       borderRadius: BorderRadius.circular(20),
 //                     ),
-//                     backgroundColor: const Color.fromRGBO(242, 183, 54, 10),
+//                     backgroundColor: const Color.fromRGBO(245, 186, 65, 0.9),
 //                     elevation: 8,
 //                   ),
 //                   child: const Text(
