@@ -5,7 +5,7 @@ import 'package:accessability_demo_google_io/presentation/widgets/widgets.dart';
 import 'package:accessability_demo_google_io/ui/input_decorations.dart';
 import 'package:provider/provider.dart';
 
-import '../../providers/login_form_provider.dart';
+import '../providers/login_form_provider.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
