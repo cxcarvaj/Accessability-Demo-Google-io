@@ -89,7 +89,7 @@ class _CustomAppBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text('Cuenta de Ahorros'),
-                Text('\$4,888.00'),
+                Text('\$ 10,000.00'),
               ],
             )
           : null,
@@ -112,6 +112,10 @@ class _BankStatements extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final debitedValue = '- \$ ${getRandomInt(10, 30)}.${getRandomInt(00, 99)}';
+    final creditedValue =
+        '+ \$ ${getRandomInt(30, 1000)}.${getRandomInt(00, 99)}';
+
     return Column(
       children: [
         ListTile(
@@ -119,17 +123,20 @@ class _BankStatements extends StatelessWidget {
           title: index % 2 != 0
               ? Text('Caj/auto.ret. $index')
               : const Text('Transferencia Directa ⚡️'),
-          subtitle: const Text('Aliqua laborum nisi labore.'),
+          subtitle: const Text('Detalle del movimiento'),
           trailing: index % 2 != 0
               ? Text(
-                  '- \$ ${getRandomInt(10, 30)}.${getRandomInt(00, 99)}',
+                  debitedValue,
+                  semanticsLabel: 'Valor debitado de la cuenta: $debitedValue',
                   style: const TextStyle(
                     fontSize: 14,
                     color: Colors.red,
                   ),
                 )
               : Text(
-                  '+ \$ ${getRandomInt(30, 1000)}.${getRandomInt(00, 99)}',
+                  creditedValue,
+                  semanticsLabel:
+                      'Valor acreditado a la cuenta: $creditedValue',
                   style: const TextStyle(
                     fontSize: 14,
                     color: Colors.green,
