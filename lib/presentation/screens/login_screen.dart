@@ -1,9 +1,8 @@
+import 'package:accessability_demo_google_io/presentation/screens/screens.dart';
 import 'package:flutter/material.dart';
-
-import 'package:accessability_demo_google_io/presentation/widgets/widgets.dart';
-
-import 'package:accessability_demo_google_io/ui/input_decorations.dart';
 import 'package:provider/provider.dart';
+import 'package:accessability_demo_google_io/presentation/widgets/widgets.dart';
+import 'package:accessability_demo_google_io/ui/input_decorations.dart';
 
 import '../providers/login_form_provider.dart';
 
@@ -51,7 +50,7 @@ class LoginScreen extends StatelessWidget {
                   // onPressed: () => Navigator.push(
                   //   context,
                   //   MaterialPageRoute(
-                  //     builder: (context) => const RegisterScreen(),
+                  //     builder: (context) => const BankScreen(),
                   //   ),
                   // ),
                   style: ButtonStyle(
@@ -156,6 +155,12 @@ class _LoginForm extends StatelessWidget {
 
                   Future.delayed(const Duration(seconds: 2), () {
                     loginForm.isLoading = false;
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const BankScreen(),
+                      ),
+                    );
                   });
                 },
                 child: Container(
