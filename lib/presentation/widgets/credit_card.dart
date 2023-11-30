@@ -18,46 +18,44 @@ class CreditCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Card(
-          elevation: 4.0,
-          color: color,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(14),
-          ),
-          child: Container(
-            height: 200,
-            padding:
-                const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 22.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _CreditCardHeader(
-                  cardTye: cardType,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
-                  child: Text(
-                    cardNumber,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 21,
-                      fontFamily: 'CourrierPrime',
-                    ),
+    return Semantics(
+      label: 'Número de tarjeta $cardNumber',
+      button: true,
+      child: Card(
+        elevation: 4.0,
+        color: color,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(14),
+        ),
+        child: Container(
+          height: 200,
+          padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 22.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _CreditCardHeader(
+                cardTye: cardType,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0),
+                child: Text(
+                  cardNumber,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 21,
+                    fontFamily: 'CourrierPrime',
                   ),
                 ),
-                _CreditCardFooter(
-                  cardHolder: cardHolder,
-                  cardExpiration: cardExpiration,
-                ),
-              ],
-            ),
+              ),
+              _CreditCardFooter(
+                cardHolder: cardHolder,
+                cardExpiration: cardExpiration,
+              ),
+            ],
           ),
-        )
-      ],
+        ),
+      ),
     );
   }
 }
@@ -70,20 +68,26 @@ class _CreditCardHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Image.asset(
-          "assets/images/contact_less.png",
-          height: 20,
-          width: 18,
-        ),
-        Image.asset(
-          "assets/images/$cardTye.png",
-          height: 50,
-          width: 50,
-        ),
-      ],
+    return MergeSemantics(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          ExcludeSemantics(
+            child: Image.asset(
+              "assets/images/contact_less.png",
+              height: 20,
+              width: 18,
+              semanticLabel: 'Tarjeta con chip',
+            ),
+          ),
+          Image.asset(
+            "assets/images/$cardTye.png",
+            height: 50,
+            width: 50,
+            semanticLabel: 'Tarjeta $cardTye',
+          ),
+        ],
+      ),
     );
   }
 }
@@ -102,13 +106,20 @@ class _CreditCardFooter extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        _buildDetailsBlock(
-          label: 'CARDHOLDER',
-          value: cardHolder,
+        Semantics(
+          label: 'Información del titular de la tarjeta',
+          textField: true,
+          child: _buildDetailsBlock(
+            label: 'CARDHOLDER',
+            value: cardHolder,
+          ),
         ),
-        _buildDetailsBlock(
-          label: 'VALID THRU',
-          value: cardExpiration,
+        Semantics(
+          label: 'Valida hasta $cardExpiration',
+          child: _buildDetailsBlock(
+            label: 'VALID THRU',
+            value: cardExpiration,
+          ),
         ),
       ],
     );
